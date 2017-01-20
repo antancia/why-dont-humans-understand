@@ -13,7 +13,9 @@ export default class extends Phaser.State {
     //
     // load your assets
     //
-    this.load.image('mushroom', 'assets/images/mushroom2.png')
+    this.load.atlas('cat',
+      'assets/images/cat-sprite-sheet.png',
+      'assets/atlases/cat-sprite-sheet.json')
   }
 
   create () {
