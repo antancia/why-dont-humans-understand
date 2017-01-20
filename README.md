@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Why Don't Humans Understand?
 #### A small game where you play as a very annoying cat.
 
