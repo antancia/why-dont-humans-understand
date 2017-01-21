@@ -1,0 +1,20 @@
+import Phaser from 'phaser'
+
+export default class extends Phaser.Sprite {
+
+  constructor ({ game, x, y, asset, frame }) {
+    super(game, x, y, asset, frame)
+    this.anchor.setTo(0.5)
+    this.smoothed = false
+    this.scale.setTo(4, 4)
+    this.game.physics.arcade.enable(this)
+    this.body.collideWorldBounds = true
+    this.body.gravity.y = 1000
+    this.body.drag.setTo(500)
+    this.body.checkCollision.up = false
+  }
+
+  update () {
+
+  }
+}

@@ -8,7 +8,11 @@ export default class extends Phaser.Sprite {
     this.smoothed = false
     this.scale.setTo(4, 4)
     this.facing = 'right'
-    this.jumpTimer = 0
+    this.frameName = 'cat-sit.png'
+    this.game.physics.arcade.enable(this)
+    this.body.collideWorldBounds = true
+    this.body.gravity.y = 1000
+    // this.jumpTimer = 0
 
     // Add the animations
     this.animations.add(
@@ -25,7 +29,7 @@ export default class extends Phaser.Sprite {
     )
     this.animations.add(
       'jump',
-      ['cat-jump-1.png', 'cat-jump-2.png', 'cat-sit.png'],
+      ['cat-jump-1.png', 'cat-jump-2.png'],
       5,
       false
     )
@@ -38,7 +42,7 @@ export default class extends Phaser.Sprite {
     this.animations.add(
       'meow',
       ['cat-meow-1.png', 'cat-meow-2.png', 'cat-meow-1.png'],
-      2,
+      3,
       false
     )
     this.animations.add(
@@ -59,6 +63,18 @@ export default class extends Phaser.Sprite {
       4,
       false
     )
+  }
+
+  walkDirection (direction) {
+    if (direction === 'right') {
+      this.scale.x = 4
+      this.body.velocity.x = 150
+      this.facing = 'right'
+    } else if (direction === 'left') {
+      this.scale.x = -4
+      this.body.velocity.x = -150
+      this.facing = 'left'
+    }
   }
 
   update () {

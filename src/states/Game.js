@@ -1,6 +1,8 @@
 /* globals __DEV__ */
 import Phaser from 'phaser'
 import Cat from '../sprites/Cat'
+import BreakableObject from '../sprites/BreakableObject'
+import Platform from '../sprites/Platform'
 
 export default class extends Phaser.State {
 
@@ -8,84 +10,127 @@ export default class extends Phaser.State {
   preload () {}
 
   create () {
-    // const bannerText = 'Why Don\'t Humans Understand'
-    // let banner = this.add.text(this.world.centerX, this.game.height - 80, bannerText)
-    // banner.font = 'Bangers'
-    // banner.padding.set(10, 16)
-    // banner.fontSize = 40
-    // banner.fill = '#77BFA3'
-    // banner.smoothed = false
-    // banner.anchor.setTo(0.5)
-
     // Enable physics & gravity
-    this.time.desiredFps = 30
+    this.time.desiredFps = 60
     this.game.physics.startSystem(Phaser.Physics.ARCADE)
-    // this.game.physics.arcade.gravity.y = 100
-    // this.game.physics.p2.restitution = 0.8
+    this.game.physics.arcade.gravity.y = 300
 
     // Get keyboard inputs
     this.keyInput = this.game.input.keyboard.createCursorKeys()
     this.keyInput.xKey = this.game.input.keyboard.addKey(Phaser.Keyboard.X)
     this.keyInput.zKey = this.game.input.keyboard.addKey(Phaser.Keyboard.Z)
 
+    // Add audio
+    this.explodeSound = this.add.audio('explode')
+    this.meowSound = this.add.audio('meow')
+
+    // Create groups
+    this.platforms = this.game.add.group()
+    this.objects = this.game.add.group()
+
     // Create new cat sprite
     this.cat = new Cat({
       game: this.game,
-      x: this.world.centerX,
-      y: this.world.centerY,
+      x: 16,
+      y: 476,
       asset: 'cat'
     })
 
-    // Add the cat into the game state and add physics
+    this.vase = new BreakableObject({
+      game: this.game,
+      x: 500,
+      y: 401,
+      asset: 'objects',
+      frame: 'vase.png'
+    })
+
+    this.smallPlatform = new Platform({
+      game: this.game,
+      x: this.world.centerX,
+      y: 425,
+      asset: 'platform-small-pink'
+    })
+
+    // this.largePlatform = new Platform({
+    //   game: this.game,
+    //   x: this.world.centerX,
+    //   y: this.world.centerY,
+    //   asset: 'objects',
+    //   frame: 'platform-large-blue.png'
+    // })
+
+    // Add the vase
+    this.game.add.existing(this.vase)
+    this.objects.add(this.vase)
+
+    // Add the cat
     this.game.add.existing(this.cat)
-    this.cat.frame = 10
-    this.game.physics.arcade.enable(this.cat)
+
+    // Add the platform
+    // this.game.add.existing(this.largePlatform)
+    // this.largePlatform.y = 425
+    // this.platforms.add(this.largePlatform)
+    this.game.add.existing(this.smallPlatform)
+    this.platforms.add(this.smallPlatform)
   }
 
   update () {
+    this.cat.body.velocity.x = 0
+
+    this.game.physics.arcade.collide(this.cat, this.platforms)
+    this.game.physics.arcade.collide(this.objects, this.platforms)
+    this.game.physics.arcade.collide(this.cat, this.objects)
+
+    // Check if objects are hitting the ground
+    this.objects.forEach(object => {
+      if (object.body.onFloor()) {
+        this.explodeSound.play()
+        object.destroy()
+      }
+    })
+
+    // Handle cat and breakable object collision
+    // this.game.physics.arcade.collide(this.cat, this.objects, this.breakThings, null, this)
+
+    // Add basic walking functionality and animations
     if (this.keyInput.right.isDown) {
-      if (this.cat.facing !== 'right') {
-        this.cat.facing = 'right'
-        this.cat.scale.x = 4
+      this.cat.walkDirection('right')
+      if (this.cat.body.onFloor() || this.cat.body.touching.down) {
+        this.cat.animations.play('walk')
       }
-      this.cat.animations.play('walk')
-      this.cat.body.velocity.x = 150
     } else if (this.keyInput.left.isDown) {
-      if (this.cat.facing !== 'left') {
-        this.cat.facing = 'left'
-        this.cat.scale.x = -4
+      this.cat.walkDirection('left')
+      if (this.cat.body.onFloor() || this.cat.body.touching.down) {
+        this.cat.animations.play('walk')
       }
-      this.cat.animations.play('walk')
-      this.cat.body.velocity.x = -150
-    } else {
-      if (this.cat.facing !== 'idle') {
+    } else if (this.cat.body.onFloor() || this.cat.body.touching.down &&
+        Phaser.Point.equals(this.cat.body.velocity, new Phaser.Point(0, 0))) {
+      if (this.keyInput.xKey.isDown) {
+        this.cat.animations.play('attack')
+      } else if (this.keyInput.zKey.isDown) {
+        this.cat.animations.play('meow')
+        this.meowSound.play()
+      } else {
         this.cat.animations.stop()
         this.cat.facing = 'idle'
-        this.cat.frame = 10
+        this.cat.frameName = 'cat-sit.png'
       }
     }
 
-
-    //TODO: this code is breaking stuff
-    // if (this.keyInput.up.isDown && this.cat.body.onFloor() && this.game.time.now > this.catjumpTimer) {
-    //   this.cat.animations.play('jump')
-    //   this.cat.body.moveUp(1000)
-    // }
-
-    if (this.keyInput.xKey.isDown) {
-      this.cat.animations.play('attack')
-    }
-
-    if (this.keyInput.zKey.isDown) {
-      this.cat.animations.play('scratch')
+    // Jump logic
+    if ((this.cat.body.onFloor() || this.cat.body.touching.down) && this.keyInput.up.isDown) {
+      this.cat.animations.play('jump')
+      this.cat.body.velocity.y = -500
     }
   }
 
   render () {
     if (__DEV__) {
-      // Show sprite debugging info and collisio box
-      this.game.debug.spriteInfo(this.cat, 32, 32)
-      this.game.debug.body(this.cat)
+      // Show sprite debugging info and collision box
+      // this.game.debug.spriteInfo(this.vase, 32, 32)
+      // this.game.debug.body(this.cat)
+      // this.game.debug.body(this.vase)
+      // this.game.debug.body(this.smallPlatform)
     }
   }
 }

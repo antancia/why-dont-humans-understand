@@ -2,7 +2,7 @@
 
 {
 	"filename": "cat-attack-1.png",
-	"frame": {"x":76,"y":16,"w":10,"h":12},
+	"frame": {"x":15,"y":53,"w":10,"h":12},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":10,"h":12},
@@ -10,7 +10,7 @@
 },
 {
 	"filename": "cat-attack-2.png",
-	"frame": {"x":26,"y":18,"w":11,"h":12},
+	"frame": {"x":15,"y":39,"w":11,"h":12},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":11,"h":12},
@@ -18,7 +18,7 @@
 },
 {
 	"filename": "cat-eat-1.png",
-	"frame": {"x":43,"y":2,"w":10,"h":13},
+	"frame": {"x":2,"y":67,"w":10,"h":13},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":10,"h":13},
@@ -26,7 +26,7 @@
 },
 {
 	"filename": "cat-happy.png",
-	"frame": {"x":26,"y":2,"w":15,"h":14},
+	"frame": {"x":13,"y":82,"w":15,"h":14},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":15,"h":14},
@@ -34,7 +34,7 @@
 },
 {
 	"filename": "cat-jump-1.png",
-	"frame": {"x":39,"y":18,"w":11,"h":12},
+	"frame": {"x":2,"y":53,"w":11,"h":12},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":11,"h":12},
@@ -42,7 +42,7 @@
 },
 {
 	"filename": "cat-jump-2.png",
-	"frame": {"x":88,"y":2,"w":11,"h":11},
+	"frame": {"x":14,"y":12,"w":11,"h":11},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":11,"h":11},
@@ -50,7 +50,7 @@
 },
 {
 	"filename": "cat-meow-1.png",
-	"frame": {"x":55,"y":2,"w":8,"h":13},
+	"frame": {"x":14,"y":67,"w":8,"h":13},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":8,"h":13},
@@ -58,7 +58,7 @@
 },
 {
 	"filename": "cat-meow-2.png",
-	"frame": {"x":52,"y":17,"w":9,"h":13},
+	"frame": {"x":2,"y":82,"w":9,"h":13},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":9,"h":13},
@@ -66,7 +66,7 @@
 },
 {
 	"filename": "cat-scratch-1.png",
-	"frame": {"x":14,"y":2,"w":10,"h":17},
+	"frame": {"x":2,"y":98,"w":10,"h":17},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":10,"h":17},
@@ -74,7 +74,7 @@
 },
 {
 	"filename": "cat-scratch-2.png",
-	"frame": {"x":2,"y":2,"w":10,"h":19},
+	"frame": {"x":14,"y":98,"w":10,"h":19},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":10,"h":19},
@@ -82,7 +82,7 @@
 },
 {
 	"filename": "cat-sit.png",
-	"frame": {"x":78,"y":2,"w":8,"h":12},
+	"frame": {"x":2,"y":25,"w":8,"h":12},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":8,"h":12},
@@ -90,7 +90,7 @@
 },
 {
 	"filename": "cat-sleep-1.png",
-	"frame": {"x":2,"y":23,"w":10,"h":7},
+	"frame": {"x":2,"y":2,"w":10,"h":7},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":10,"h":7},
@@ -98,7 +98,7 @@
 },
 {
 	"filename": "cat-sleep-2.png",
-	"frame": {"x":88,"y":15,"w":10,"h":8},
+	"frame": {"x":14,"y":2,"w":10,"h":8},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":10,"h":8},
@@ -106,7 +106,7 @@
 },
 {
 	"filename": "cat-sleep-3.png",
-	"frame": {"x":14,"y":21,"w":10,"h":9},
+	"frame": {"x":2,"y":12,"w":10,"h":9},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":10,"h":9},
@@ -114,7 +114,7 @@
 },
 {
 	"filename": "cat-walk-1.png",
-	"frame": {"x":63,"y":17,"w":11,"h":12},
+	"frame": {"x":12,"y":25,"w":11,"h":12},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":11,"h":12},
@@ -122,7 +122,7 @@
 },
 {
 	"filename": "cat-walk-2.png",
-	"frame": {"x":65,"y":2,"w":11,"h":12},
+	"frame": {"x":2,"y":39,"w":11,"h":12},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":11,"h":12},
@@ -133,8 +133,8 @@
 	"version": "1.0",
 	"image": "cat-sprite-sheet.png",
 	"format": "RGBA8888",
-	"size": {"w":101,"h":32},
+	"size": {"w":30,"h":119},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:67750b5499aab1615ffcb855ba9c50aa:239221e1ba1700f937f17f9cae5e58d8:ce28b3bf2a3c03587d8b4b4f652e753a$"
+	"smartupdate": "$TexturePacker:SmartUpdate:d1cb53269f3dc0ee3a5214ee96fcbc3b:239221e1ba1700f937f17f9cae5e58d8:ce28b3bf2a3c03587d8b4b4f652e753a$"
 }
 }

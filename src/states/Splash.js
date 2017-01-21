@@ -16,6 +16,10 @@ export default class extends Phaser.State {
     this.load.atlas('cat',
       'assets/images/cat-sprite-sheet.png',
       'assets/atlases/cat-sprite-sheet.json')
+    this.load.atlas('objects',
+      'assets/images/objects-sprite-sheet.png',
+      'assets/atlases/objects-sprite-sheet.json')
+    this.load.image('platform-small-pink', 'assets/images/platform-small-pink.png')
 
     // loading audio assets
     this.meowSound = this.load.audio('meow', 'assets/audio/soundEffects/meow.wav')
@@ -27,7 +31,6 @@ export default class extends Phaser.State {
     //   this.start,
     //   this
     // )
-
   }
 
   create () {
