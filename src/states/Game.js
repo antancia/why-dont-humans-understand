@@ -7,9 +7,21 @@ import Platform from '../sprites/Platform'
 export default class extends Phaser.State {
 
   init () {}
-  preload () {}
+  preload () {
+  }
 
   create () {
+    let score = '0'
+    let scoreText = `Human Understanding Level: ${score}%`
+    // let scoreDisplay = this.add.text(500, 500, scoreText)
+    let scoreDisplay = this.game.add.bitmapText(200, 100, 'coders-crux', scoreText, 40)
+    // scoreDisplay.font = 'VT323'
+    // scoreDisplay.fontSize = 20
+    scoreDisplay.tint = '#444c4d'
+    // scoreDisplay.anchor.setTo(0.5)
+    // scoreDisplay.smooth = false
+    // scoreDisplay.padding.set(10, 16)
+
     // Enable physics & gravity
     this.time.desiredFps = 60
     this.game.physics.startSystem(Phaser.Physics.ARCADE)
@@ -23,6 +35,7 @@ export default class extends Phaser.State {
     // Add audio
     this.explodeSound = this.add.audio('explode')
     this.meowSound = this.add.audio('meow')
+    this.jumpSound = this.add.audio('jump')
 
     // Create groups
     this.platforms = this.game.add.group()
@@ -65,7 +78,7 @@ export default class extends Phaser.State {
     // Add the cat
     this.game.add.existing(this.cat)
 
-    // Add the platform
+    // Add the platforms
     this.game.add.existing(this.largePlatform)
     this.platforms.add(this.largePlatform)
     this.game.add.existing(this.smallPlatform)
@@ -87,7 +100,6 @@ export default class extends Phaser.State {
         object.events.onAnimationComplete.add(() => {
           object.destroy()
         })
-        // object.destroy()
       }
     })
 
@@ -119,6 +131,7 @@ export default class extends Phaser.State {
     // Jump logic
     if ((this.cat.body.onFloor() || this.cat.body.touching.down) && this.keyInput.up.isDown) {
       this.cat.animations.play('jump')
+      this.jumpSound.play()
       this.cat.body.velocity.y = -500
     }
   }
@@ -126,7 +139,7 @@ export default class extends Phaser.State {
   render () {
     if (__DEV__) {
       // Show sprite debugging info and collision box
-      // this.game.debug.spriteInfo(this.vase, 32, 32)
+      // this.game.debug.spriteInfo(this.cat, 32, 32)
       // this.game.debug.body(this.cat)
       // this.game.debug.body(this.vase)
       // this.game.debug.body(this.smallPlatform)

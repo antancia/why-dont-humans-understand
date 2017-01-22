@@ -2,7 +2,7 @@
 
 {
 	"filename": "cat-attack-1.png",
-	"frame": {"x":15,"y":53,"w":10,"h":12},
+	"frame": {"x":12,"y":67,"w":10,"h":12},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":10,"h":12},
@@ -10,7 +10,7 @@
 },
 {
 	"filename": "cat-attack-2.png",
-	"frame": {"x":15,"y":39,"w":11,"h":12},
+	"frame": {"x":2,"y":53,"w":11,"h":12},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":11,"h":12},
@@ -18,7 +18,7 @@
 },
 {
 	"filename": "cat-eat-1.png",
-	"frame": {"x":2,"y":67,"w":10,"h":13},
+	"frame": {"x":2,"y":81,"w":10,"h":13},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":10,"h":13},
@@ -26,7 +26,7 @@
 },
 {
 	"filename": "cat-happy.png",
-	"frame": {"x":13,"y":82,"w":15,"h":14},
+	"frame": {"x":14,"y":81,"w":15,"h":14},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":15,"h":14},
@@ -34,7 +34,7 @@
 },
 {
 	"filename": "cat-jump-1.png",
-	"frame": {"x":2,"y":53,"w":11,"h":12},
+	"frame": {"x":15,"y":53,"w":11,"h":12},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":11,"h":12},
@@ -50,23 +50,23 @@
 },
 {
 	"filename": "cat-meow-1.png",
-	"frame": {"x":14,"y":67,"w":8,"h":13},
+	"frame": {"x":2,"y":67,"w":8,"h":12},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":8,"h":13},
-	"sourceSize": {"w":8,"h":13}
+	"spriteSourceSize": {"x":0,"y":0,"w":8,"h":12},
+	"sourceSize": {"w":8,"h":12}
 },
 {
 	"filename": "cat-meow-2.png",
-	"frame": {"x":2,"y":82,"w":9,"h":13},
+	"frame": {"x":15,"y":25,"w":9,"h":12},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":9,"h":13},
-	"sourceSize": {"w":9,"h":13}
+	"spriteSourceSize": {"x":0,"y":0,"w":9,"h":12},
+	"sourceSize": {"w":9,"h":12}
 },
 {
 	"filename": "cat-scratch-1.png",
-	"frame": {"x":2,"y":98,"w":10,"h":17},
+	"frame": {"x":2,"y":97,"w":10,"h":17},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":10,"h":17},
@@ -74,7 +74,7 @@
 },
 {
 	"filename": "cat-scratch-2.png",
-	"frame": {"x":14,"y":98,"w":10,"h":19},
+	"frame": {"x":14,"y":97,"w":10,"h":19},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":10,"h":19},
@@ -82,7 +82,7 @@
 },
 {
 	"filename": "cat-sit.png",
-	"frame": {"x":2,"y":25,"w":8,"h":12},
+	"frame": {"x":2,"y":39,"w":8,"h":12},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":8,"h":12},
@@ -114,7 +114,7 @@
 },
 {
 	"filename": "cat-walk-1.png",
-	"frame": {"x":12,"y":25,"w":11,"h":12},
+	"frame": {"x":2,"y":25,"w":11,"h":12},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":11,"h":12},
@@ -122,7 +122,7 @@
 },
 {
 	"filename": "cat-walk-2.png",
-	"frame": {"x":2,"y":39,"w":11,"h":12},
+	"frame": {"x":12,"y":39,"w":11,"h":12},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":11,"h":12},
@@ -133,8 +133,8 @@
 	"version": "1.0",
 	"image": "cat-sprite-sheet.png",
 	"format": "RGBA8888",
-	"size": {"w":30,"h":119},
+	"size": {"w":31,"h":118},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:d1cb53269f3dc0ee3a5214ee96fcbc3b:239221e1ba1700f937f17f9cae5e58d8:ce28b3bf2a3c03587d8b4b4f652e753a$"
+	"smartupdate": "$TexturePacker:SmartUpdate:09ae33fe9ec08a79061ea2c093b3445d:72219d03e615a9f109c3688f8286a464:ce28b3bf2a3c03587d8b4b4f652e753a$"
 }
 }
