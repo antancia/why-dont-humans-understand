@@ -46,18 +46,17 @@ export default class extends Phaser.State {
 
     this.smallPlatform = new Platform({
       game: this.game,
-      x: this.world.centerX,
-      y: 425,
+      x: 650,
+      y: 350,
       asset: 'platform-small-pink'
     })
 
-    // this.largePlatform = new Platform({
-    //   game: this.game,
-    //   x: this.world.centerX,
-    //   y: this.world.centerY,
-    //   asset: 'objects',
-    //   frame: 'platform-large-blue.png'
-    // })
+    this.largePlatform = new Platform({
+      game: this.game,
+      x: this.world.centerX,
+      y: 425,
+      asset: 'platform-large-blue'
+    })
 
     // Add the vase
     this.game.add.existing(this.vase)
@@ -67,9 +66,8 @@ export default class extends Phaser.State {
     this.game.add.existing(this.cat)
 
     // Add the platform
-    // this.game.add.existing(this.largePlatform)
-    // this.largePlatform.y = 425
-    // this.platforms.add(this.largePlatform)
+    this.game.add.existing(this.largePlatform)
+    this.platforms.add(this.largePlatform)
     this.game.add.existing(this.smallPlatform)
     this.platforms.add(this.smallPlatform)
   }
@@ -85,12 +83,13 @@ export default class extends Phaser.State {
     this.objects.forEach(object => {
       if (object.body.onFloor()) {
         this.explodeSound.play()
-        object.destroy()
+        object.animations.play('explode')
+        object.events.onAnimationComplete.add(() => {
+          object.destroy()
+        })
+        // object.destroy()
       }
     })
-
-    // Handle cat and breakable object collision
-    // this.game.physics.arcade.collide(this.cat, this.objects, this.breakThings, null, this)
 
     // Add basic walking functionality and animations
     if (this.keyInput.right.isDown) {

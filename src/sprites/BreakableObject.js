@@ -11,7 +11,19 @@ export default class extends Phaser.Sprite {
     this.body.collideWorldBounds = true
     this.body.gravity.y = 1000
     this.body.drag.setTo(500)
+    // Prevents cat from jumping on top of objects
     this.body.checkCollision.up = false
+
+    this.animations.add(
+      'explode',
+      Phaser.Animation.generateFrameNames('explode-', 1, 3, '.png'),
+      15,
+      false
+    )
+  }
+
+  explode () {
+
   }
 
   update () {

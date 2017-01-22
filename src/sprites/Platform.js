@@ -10,8 +10,9 @@ export default class extends Phaser.Sprite {
     game.physics.arcade.enable(this)
     this.body.allowGravity = false
     this.body.immovable = true
-
     this.playerLocked = false
+    // Allow one way platforms
+    this.body.checkCollision.down = false
   }
 
   update () {

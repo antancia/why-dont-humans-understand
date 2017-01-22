@@ -20,6 +20,7 @@ export default class extends Phaser.State {
       'assets/images/objects-sprite-sheet.png',
       'assets/atlases/objects-sprite-sheet.json')
     this.load.image('platform-small-pink', 'assets/images/platform-small-pink.png')
+    this.load.image('platform-large-blue', 'assets/images/platform-large-blue.png')
 
     // loading audio assets
     this.meowSound = this.load.audio('meow', 'assets/audio/soundEffects/meow.wav')
