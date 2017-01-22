@@ -16,10 +16,16 @@ export default class extends Phaser.State {
   }
 
   updateScore (action) {
-    if (action === 'meow') {
-      this.game.score += 0.001
-    } else if (action === 'destroy') {
-      this.game.score += 10
+    switch (action) {
+      case 'meow':
+        this.game.score += 0.001
+        break
+      case 'destroy':
+        this.game.score += 10
+        break
+    }
+    if (this.game.score >= 10) {
+      this.state.start('GameOver')
     }
     this.game.scoreDisplay.setText(`Human Understanding Level: ${this.game.score.toFixed(2)} %`)
   }
