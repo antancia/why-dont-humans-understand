@@ -10,17 +10,22 @@ export default class extends Phaser.State {
   preload () {
   }
 
+  updateScore (key) {
+    return function (key) {
+      if (key.action === 'meow') {
+        this.game.score += 0.001
+      }
+
+      this.game.scoreDisplay.setText(`Human Understanding Level: ${this.game.score.toFixed(2)} %`)
+    }
+  }
+
   create () {
     this.game.score = 0
-    let scoreText = `Human Understanding Level: ${this.game.score}%`
-    // let scoreDisplay = this.add.text(500, 500, scoreText)
-    let scoreDisplay = this.game.add.bitmapText(200, 100, 'coders-crux', scoreText, 40)
-    // scoreDisplay.font = 'VT323'
-    // scoreDisplay.fontSize = 20
-    scoreDisplay.tint = '#444c4d'
-    // scoreDisplay.anchor.setTo(0.5)
-    // scoreDisplay.smooth = false
-    // scoreDisplay.padding.set(10, 16)
+    this.game.scoreText = `Human Understanding Level: ${this.game.score}%`
+    this.game.scoreDisplay = this.game.add.bitmapText(20, 20, 'coders-crux', this.game.scoreText, 40)
+    this.game.scoreDisplay.tint = '#444c4d'
+    this.game.scoreDisplay.smooth = false
 
     // Enable physics & gravity
     this.time.desiredFps = 60
@@ -31,6 +36,7 @@ export default class extends Phaser.State {
     this.keyInput = this.game.input.keyboard.createCursorKeys()
     this.keyInput.xKey = this.game.input.keyboard.addKey(Phaser.Keyboard.X)
     this.keyInput.zKey = this.game.input.keyboard.addKey(Phaser.Keyboard.Z)
+    this.keyInput.zKey.action = 'meow'
 
     // Add audio
     this.explodeSound = this.add.audio('explode')
@@ -87,10 +93,11 @@ export default class extends Phaser.State {
 
   update () {
     this.cat.body.velocity.x = 0
-
     this.game.physics.arcade.collide(this.cat, this.platforms)
     this.game.physics.arcade.collide(this.objects, this.platforms)
     this.game.physics.arcade.collide(this.cat, this.objects)
+
+    this.keyInput.zKey.onDown.addOnce(this.updateScore(this.keyInput.zKey.action), this)
 
     // Check if objects are hitting the ground
     this.objects.forEach(object => {
@@ -122,6 +129,7 @@ export default class extends Phaser.State {
         this.cat.animations.play('attack')
       } else if (this.keyInput.zKey.isDown) {
         this.cat.animations.play('meow')
+        this.score += 1
         this.meowSound.play()
       } else {
         this.cat.animations.stop()
