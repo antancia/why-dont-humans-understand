@@ -11,8 +11,8 @@ export default class extends Phaser.State {
   }
 
   create () {
-    let score = '0'
-    let scoreText = `Human Understanding Level: ${score}%`
+    this.game.score = 0
+    let scoreText = `Human Understanding Level: ${this.game.score}%`
     // let scoreDisplay = this.add.text(500, 500, scoreText)
     let scoreDisplay = this.game.add.bitmapText(200, 100, 'coders-crux', scoreText, 40)
     // scoreDisplay.font = 'VT323'
@@ -97,6 +97,8 @@ export default class extends Phaser.State {
       if (object.body.onFloor()) {
         this.explodeSound.play()
         object.animations.play('explode')
+        // TODO: this is not getting the right 'this' context to update the score
+        // this.game.score += 10
         object.events.onAnimationComplete.add(() => {
           object.destroy()
         })

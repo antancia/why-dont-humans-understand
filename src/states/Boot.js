@@ -10,6 +10,13 @@ export default class extends Phaser.State {
   }
 
   preload () {
+    WebFont.load({
+      google: {
+        families: ['VT323']
+      },
+      active: this.fontsLoaded
+    })
+
     this.game.load.bitmapFont('coders-crux', 'assets/fonts/coders_crux.png', 'assets/fonts/coders_crux.xml')
 
     let text = this.add.text(this.world.centerX, this.world.centerY, 'loading fonts', { font: '16px Arial', fill: '#dddddd', align: 'center' })
