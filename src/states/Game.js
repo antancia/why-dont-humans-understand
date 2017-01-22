@@ -6,23 +6,27 @@ import Platform from '../sprites/Platform'
 
 export default class extends Phaser.State {
 
+  constructor () {
+    super()
+    this.updateScore = this.updateScore.bind(this)
+  }
+
   init () {}
   preload () {
   }
 
-  updateScore (key) {
-    return function (key) {
-      if (key.action === 'meow') {
-        this.game.score += 0.001
-      }
-
-      this.game.scoreDisplay.setText(`Human Understanding Level: ${this.game.score.toFixed(2)} %`)
+  updateScore (action) {
+    if (action === 'meow') {
+      this.game.score += 0.001
+    } else if (action === 'destroy') {
+      this.game.score += 10
     }
+    this.game.scoreDisplay.setText(`Human Understanding Level: ${this.game.score.toFixed(2)} %`)
   }
 
   create () {
     this.game.score = 0
-    this.game.scoreText = `Human Understanding Level: ${this.game.score}%`
+    this.game.scoreText = `Human Understanding Level: ${this.game.score.toFixed(2)} %`
     this.game.scoreDisplay = this.game.add.bitmapText(20, 20, 'coders-crux', this.game.scoreText, 40)
     this.game.scoreDisplay.tint = '#444c4d'
     this.game.scoreDisplay.smooth = false
@@ -36,7 +40,10 @@ export default class extends Phaser.State {
     this.keyInput = this.game.input.keyboard.createCursorKeys()
     this.keyInput.xKey = this.game.input.keyboard.addKey(Phaser.Keyboard.X)
     this.keyInput.zKey = this.game.input.keyboard.addKey(Phaser.Keyboard.Z)
-    this.keyInput.zKey.action = 'meow'
+
+    // Action variables for scoring functionality
+    this.meowAction = 'meow'
+    this.destroyAction = 'destroy'
 
     // Add audio
     this.explodeSound = this.add.audio('explode')
@@ -97,7 +104,9 @@ export default class extends Phaser.State {
     this.game.physics.arcade.collide(this.objects, this.platforms)
     this.game.physics.arcade.collide(this.cat, this.objects)
 
-    this.keyInput.zKey.onDown.addOnce(this.updateScore(this.keyInput.zKey.action), this)
+    this.keyInput.zKey.onDown.addOnce(() => {
+      this.updateScore(this.meowAction)
+    })
 
     // Check if objects are hitting the ground
     this.objects.forEach(object => {
@@ -108,6 +117,7 @@ export default class extends Phaser.State {
         // this.game.score += 10
         object.events.onAnimationComplete.add(() => {
           object.destroy()
+          this.updateScore(this.destroyAction)
         })
       }
     })
