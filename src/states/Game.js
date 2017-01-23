@@ -21,10 +21,10 @@ export default class extends Phaser.State {
         this.game.score += 0.001
         break
       case 'destroy':
-        this.game.score += 10
+        this.game.score += 15
         break
     }
-    if (this.game.score >= 10) {
+    if (this.game.score >= 100) {
       this.state.start('GameOver')
     }
     this.game.scoreDisplay.setText(`Human Understanding Level: ${this.game.score.toFixed(2)} %`)
@@ -46,6 +46,8 @@ export default class extends Phaser.State {
     this.keyInput = this.game.input.keyboard.createCursorKeys()
     this.keyInput.xKey = this.game.input.keyboard.addKey(Phaser.Keyboard.X)
     this.keyInput.zKey = this.game.input.keyboard.addKey(Phaser.Keyboard.Z)
+    this.keyInput.cKey = this.game.input.keyboard.addKey(Phaser.Keyboard.C)
+    this.keyInput.eKey = this.game.input.keyboard.addKey(Phaser.Keyboard.E)
 
     // Action variables for scoring functionality
     this.meowAction = 'meow'
@@ -71,37 +73,161 @@ export default class extends Phaser.State {
     this.vase = new BreakableObject({
       game: this.game,
       x: 500,
-      y: 401,
+      y: 240,
       asset: 'objects',
       frame: 'vase.png'
     })
 
-    this.smallPlatform = new Platform({
+    this.cactus = new BreakableObject({
+      game: this.game,
+      x: 650,
+      y: 318,
+      asset: 'objects',
+      frame: 'cactus.png'
+    })
+
+    this.clock = new BreakableObject({
+      game: this.game,
+      x: 170,
+      y: 145,
+      asset: 'objects',
+      frame: 'clock.png'
+    })
+
+    this.globe = new BreakableObject({
+      game: this.game,
+      x: 225,
+      y: 145,
+      asset: 'objects',
+      frame: 'globe.png'
+    })
+
+    this.lamp = new BreakableObject({
+      game: this.game,
+      x: 530,
+      y: 395,
+      asset: 'objects',
+      frame: 'lamp.png'
+    })
+
+    this.glass1 = new BreakableObject({
+      game: this.game,
+      x: 480,
+      y: 410,
+      asset: 'objects',
+      frame: 'glass.png'
+    })
+
+    this.glass2 = new BreakableObject({
+      game: this.game,
+      x: 780,
+      y: 335,
+      asset: 'objects',
+      frame: 'glass.png'
+    })
+
+    this.glass3 = new BreakableObject({
+      game: this.game,
+      x: 910,
+      y: 335,
+      asset: 'objects',
+      frame: 'glass.png'
+    })
+
+    this.smallPlatform1 = new Platform({
       game: this.game,
       x: 650,
       y: 350,
       asset: 'platform-small-pink'
     })
 
-    this.largePlatform = new Platform({
+    this.smallPlatform2 = new Platform({
+      game: this.game,
+      x: 780,
+      y: 350,
+      asset: 'platform-small-pink'
+    })
+
+    this.smallPlatform3 = new Platform({
+      game: this.game,
+      x: 910,
+      y: 350,
+      asset: 'platform-small-pink'
+    })
+
+    this.smallPlatform4 = new Platform({
+      game: this.game,
+      x: 370,
+      y: 170,
+      asset: 'platform-small-pink'
+    })
+
+    this.smallPlatform5 = new Platform({
+      game: this.game,
+      x: 220,
+      y: 170,
+      asset: 'platform-small-pink'
+    })
+
+    this.smallPlatform6 = new Platform({
+      game: this.game,
+      x: 170,
+      y: 170,
+      asset: 'platform-small-pink'
+    })
+
+    this.largePlatform1 = new Platform({
       game: this.game,
       x: this.world.centerX,
       y: 425,
       asset: 'platform-large-blue'
     })
 
-    // Add the vase
+    this.largePlatform2 = new Platform({
+      game: this.game,
+      x: this.world.centerX,
+      y: 260,
+      asset: 'platform-large-blue'
+    })
+
+    // Add the objects
     this.game.add.existing(this.vase)
     this.objects.add(this.vase)
+    this.game.add.existing(this.cactus)
+    this.objects.add(this.cactus)
+    this.game.add.existing(this.clock)
+    this.objects.add(this.clock)
+    this.game.add.existing(this.globe)
+    this.objects.add(this.globe)
+    this.game.add.existing(this.lamp)
+    this.objects.add(this.lamp)
+    this.game.add.existing(this.glass1)
+    this.objects.add(this.glass1)
+    this.game.add.existing(this.glass2)
+    this.objects.add(this.glass2)
+    this.game.add.existing(this.glass3)
+    this.objects.add(this.glass3)
 
     // Add the cat
     this.game.add.existing(this.cat)
 
     // Add the platforms
-    this.game.add.existing(this.largePlatform)
-    this.platforms.add(this.largePlatform)
-    this.game.add.existing(this.smallPlatform)
-    this.platforms.add(this.smallPlatform)
+    this.game.add.existing(this.largePlatform1)
+    this.platforms.add(this.largePlatform1)
+    this.game.add.existing(this.largePlatform2)
+    this.platforms.add(this.largePlatform2)
+    this.game.add.existing(this.smallPlatform1)
+    this.platforms.add(this.smallPlatform1)
+    this.game.add.existing(this.smallPlatform2)
+    this.platforms.add(this.smallPlatform2)
+    this.game.add.existing(this.smallPlatform3)
+    this.platforms.add(this.smallPlatform3)
+    this.game.add.existing(this.smallPlatform4)
+    this.platforms.add(this.smallPlatform4)
+    this.game.add.existing(this.smallPlatform5)
+    this.platforms.add(this.smallPlatform5)
+    this.game.add.existing(this.smallPlatform6)
+    this.platforms.add(this.smallPlatform6)
   }
 
   update () {
@@ -119,8 +245,6 @@ export default class extends Phaser.State {
       if (object.body.onFloor()) {
         this.explodeSound.play()
         object.animations.play('explode')
-        // TODO: this is not getting the right 'this' context to update the score
-        // this.game.score += 10
         object.events.onAnimationComplete.add(() => {
           object.destroy()
           this.updateScore(this.destroyAction)
@@ -147,6 +271,10 @@ export default class extends Phaser.State {
         this.cat.animations.play('meow')
         this.score += 1
         this.meowSound.play()
+      } else if (this.keyInput.eKey.isDown) {
+        this.cat.animations.play('eat')
+      } else if (this.keyInput.cKey.isDown) {
+        this.cat.animations.play('scratch')
       } else {
         this.cat.animations.stop()
         this.cat.facing = 'idle'

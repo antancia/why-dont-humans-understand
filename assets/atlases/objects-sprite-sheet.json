@@ -1,8 +1,24 @@
 {"frames": [
 
 {
+	"filename": "cactus.png",
+	"frame": {"x":20,"y":2,"w":7,"h":14},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":7,"h":14},
+	"sourceSize": {"w":7,"h":14}
+},
+{
+	"filename": "clock.png",
+	"frame": {"x":2,"y":31,"w":11,"h":11},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":11,"h":11},
+	"sourceSize": {"w":11,"h":11}
+},
+{
 	"filename": "explode-1.png",
-	"frame": {"x":2,"y":43,"w":14,"h":8},
+	"frame": {"x":12,"y":44,"w":14,"h":8},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":14,"h":8},
@@ -25,8 +41,32 @@
 	"sourceSize": {"w":14,"h":10}
 },
 {
+	"filename": "glass.png",
+	"frame": {"x":12,"y":54,"w":5,"h":6},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":5,"h":6},
+	"sourceSize": {"w":5,"h":6}
+},
+{
+	"filename": "globe.png",
+	"frame": {"x":15,"y":31,"w":9,"h":11},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":9,"h":11},
+	"sourceSize": {"w":9,"h":11}
+},
+{
+	"filename": "lamp.png",
+	"frame": {"x":2,"y":44,"w":8,"h":13},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":8,"h":13},
+	"sourceSize": {"w":8,"h":13}
+},
+{
 	"filename": "vase.png",
-	"frame": {"x":2,"y":31,"w":9,"h":10},
+	"frame": {"x":18,"y":19,"w":9,"h":10},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":9,"h":10},
@@ -37,8 +77,8 @@
 	"version": "1.0",
 	"image": "objects-sprite-sheet.png",
 	"format": "RGBA8888",
-	"size": {"w":20,"h":53},
+	"size": {"w":29,"h":62},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:6cda58523003e19bd90c91ec05246c39:b8b5aa4f02b491b1e7c1221924986989:0dee90fe79201bdcdac08cd8797bc769$"
+	"smartupdate": "$TexturePacker:SmartUpdate:27c22d0e89403601fa509b353a29334b:5739a3de36a090f4498ca7b93d8ad6f4:0dee90fe79201bdcdac08cd8797bc769$"
 }
 }
