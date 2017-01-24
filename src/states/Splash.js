@@ -19,6 +19,7 @@ export default class extends Phaser.State {
     this.load.atlas('objects',
       'assets/images/objects-sprite-sheet.png',
       'assets/atlases/objects-sprite-sheet.json')
+    this.load.image('background', 'assets/images/background2.png')
     this.load.image('platform-small-pink', 'assets/images/platform-small-pink.png')
     this.load.image('platform-large-blue', 'assets/images/platform-large-blue.png')
 

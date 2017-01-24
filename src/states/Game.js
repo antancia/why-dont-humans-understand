@@ -31,6 +31,7 @@ export default class extends Phaser.State {
   }
 
   create () {
+    this.game.add.sprite(0, 0, 'background')
     this.game.score = 0
     this.game.scoreText = `Human Understanding Level: ${this.game.score.toFixed(2)} %`
     this.game.scoreDisplay = this.game.add.bitmapText(20, 20, 'coders-crux', this.game.scoreText, 40)
@@ -228,6 +229,7 @@ export default class extends Phaser.State {
     this.platforms.add(this.smallPlatform5)
     this.game.add.existing(this.smallPlatform6)
     this.platforms.add(this.smallPlatform6)
+
   }
 
   update () {
