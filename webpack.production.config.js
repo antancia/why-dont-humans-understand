@@ -1,5 +1,6 @@
 var path = require('path')
 var webpack = require('webpack')
+var BrowserSyncPlugin = require('browser-sync-webpack-plugin')
 
 // Phaser webpack config
 var phaserModule = path.join(__dirname, '/node_modules/phaser-ce/')
@@ -36,6 +37,13 @@ module.exports = {
       },
       compress: {
         warnings: false
+      }
+    }),
+    new BrowserSyncPlugin({
+      host: process.env.IP || 'localhost',
+      port: process.env.PORT || 80,
+      server: {
+        baseDir: ['./', './build']
       }
     }),
     new webpack.optimize.OccurenceOrderPlugin(),
