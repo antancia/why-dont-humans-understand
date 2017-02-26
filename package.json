@@ -7,8 +7,7 @@
   "scripts": {
     "dev": "webpack",
     "deploy": "webpack --config webpack.production.config.js",
-    "test": "standard",
-    "start": "webpack --config webpack.production.config.js"
+    "test": "standard"
   },
   "license": "MIT",
   "devDependencies": {
@@ -16,6 +15,8 @@
     "babel-loader": "^6.2.10",
     "babel-polyfill": "^6.20.0",
     "babel-preset-es2015": "^6.18.0",
+    "browser-sync": "^2.18.6",
+    "browser-sync-webpack-plugin": "^1.1.3",
     "eslint": "^3.13.1",
     "eslint-config-standard": "^6.2.1",
     "eslint-plugin-promise": "^3.4.0",
@@ -24,9 +25,8 @@
     "webpack": "^1.14.0"
   },
   "dependencies": {
+    "express": "^4.14.1",
     "phaser-ce": "^2.7.3",
-    "webfontloader": "^1.6.27",
-    "browser-sync": "^2.18.6",
-    "browser-sync-webpack-plugin": "^1.1.3"
+    "webfontloader": "^1.6.27"
   }
 }

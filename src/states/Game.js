@@ -12,8 +12,7 @@ export default class extends Phaser.State {
   }
 
   init () {}
-  preload () {
-  }
+  preload () {}
 
   updateScore (action) {
     switch (action) {
@@ -28,6 +27,18 @@ export default class extends Phaser.State {
       this.state.start('GameOver')
     }
     this.game.scoreDisplay.setText(`Human Understanding Level: ${this.game.score.toFixed(2)} %`)
+  }
+
+  createAllSpritesOrPlatforms (arrayOfSpritesOrPlatforms, type) {
+    arrayOfSpritesOrPlatforms.forEach(thing => {
+      this.game.add.existing(thing)
+
+      if (type === 'sprite') {
+        this.objects.add(thing)
+      } else if (type === 'platform') {
+        this.platforms.add(thing)
+      }
+    })
   }
 
   create () {
@@ -191,45 +202,16 @@ export default class extends Phaser.State {
       asset: 'platform-large-blue'
     })
 
-    // Add the objects
-    this.game.add.existing(this.vase)
-    this.objects.add(this.vase)
-    this.game.add.existing(this.cactus)
-    this.objects.add(this.cactus)
-    this.game.add.existing(this.clock)
-    this.objects.add(this.clock)
-    this.game.add.existing(this.globe)
-    this.objects.add(this.globe)
-    this.game.add.existing(this.lamp)
-    this.objects.add(this.lamp)
-    this.game.add.existing(this.glass1)
-    this.objects.add(this.glass1)
-    this.game.add.existing(this.glass2)
-    this.objects.add(this.glass2)
-    this.game.add.existing(this.glass3)
-    this.objects.add(this.glass3)
+    // Add the player, objects, and platforms
+    this.gameSprites = [this.vase, this.cactus, this.clock, this.globe, this.lamp,
+      this.glass1, this.glass2, this.glass3]
+    this.gamePlatforms = [this.largePlatform1, this.largePlatform2, this.smallPlatform1,
+      this.smallPlatform2, this.smallPlatform3, this.smallPlatform4, this.smallPlatform5,
+      this.smallPlatform6]
 
-    // Add the cat
+    this.createAllSpritesOrPlatforms(this.gameSprites, 'sprite')
+    this.createAllSpritesOrPlatforms(this.gamePlatforms, 'platform')
     this.game.add.existing(this.cat)
-
-    // Add the platforms
-    this.game.add.existing(this.largePlatform1)
-    this.platforms.add(this.largePlatform1)
-    this.game.add.existing(this.largePlatform2)
-    this.platforms.add(this.largePlatform2)
-    this.game.add.existing(this.smallPlatform1)
-    this.platforms.add(this.smallPlatform1)
-    this.game.add.existing(this.smallPlatform2)
-    this.platforms.add(this.smallPlatform2)
-    this.game.add.existing(this.smallPlatform3)
-    this.platforms.add(this.smallPlatform3)
-    this.game.add.existing(this.smallPlatform4)
-    this.platforms.add(this.smallPlatform4)
-    this.game.add.existing(this.smallPlatform5)
-    this.platforms.add(this.smallPlatform5)
-    this.game.add.existing(this.smallPlatform6)
-    this.platforms.add(this.smallPlatform6)
-
   }
 
   update () {
