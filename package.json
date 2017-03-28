@@ -5,7 +5,7 @@
   "author": "harmony dashut<harmony.dashut@gmail.com>",
   "main": "index.js",
   "scripts": {
-    "start": "node ./server/",
+    "start": "node server/",
     "dev": "webpack",
     "deploy": "webpack --config webpack.production.config.js",
     "test": "standard"
