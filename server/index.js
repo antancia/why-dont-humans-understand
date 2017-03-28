@@ -1,7 +1,7 @@
 const http = require('http')
 const pipeline = require('./server')
 const server = http.createServer()
-const port = process.env.PORT || 1337
+const port = process.env.PORT || 3001
 
 server.on('request', pipeline)
 
